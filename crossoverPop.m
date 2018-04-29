@@ -22,6 +22,9 @@ for i = 1:2:m
         cx = crossoverReal(px, py, col, pcg, alfa);
         cy = crossoverReal(py, px, col, pcg, alfa);
         
+        %cx = crossoverSimplu(px, py);
+        %cy = crossoverSimplu(py, px);
+        
         O(perm(i), :) = cx;
         O(perm(i+1), :) = cy;
     end
@@ -42,3 +45,28 @@ for i=1:col-1
 end
 z = checkFez_decision(z,x);
 end
+
+
+function[z] = crossoverSimplu(x, y)
+z(1) = x(1);
+z(2) = y(2);
+z = checkFez_decision(z,x);
+end
+
+
+function[children] = crossoverMultipct(parents, col, pcg)
+children = parents;
+for i=1:col-1
+    r = unifrnd(0,1);
+    if(r < pcg)
+        children(1,i) = parents(2, i);
+        children(2,i) = parents(1, i);
+        %    else
+        %        children(1,i) = parents(1, i);
+        %        children(2,i) = parents(2, i);
+    end
+end
+children(1,:) = checkFez_decision(children(1,:),parents(1,:));
+children(2,:) = checkFez_decision(children(2,:),parents(1,:));
+end
+

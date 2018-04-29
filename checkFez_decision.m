@@ -4,7 +4,7 @@ if (checkFez(changedIndivid) == false)
     changedIndivid = initIndivid; %nicio schimbare
 else
     changedIndivid(3) = fitness(changedIndivid);
-    
+    %return;
 end
 end
 
