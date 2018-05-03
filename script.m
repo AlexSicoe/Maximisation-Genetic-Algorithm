@@ -1,10 +1,8 @@
 generations = 50;
 individuals = 70;
 pc = 0.75;
-pcg= 1;
 alfa = 0.65;
 pm = 0.25;
-pmg = 1;
 sigma = 0.07;
 tournamentParticipants = 3;
 
@@ -15,8 +13,8 @@ vectorBestFit = zeros(1, generations);
 
 for t = 1:generations
     pop = selectTournament(pop,tournamentParticipants);
-    O = crossoverPop(pop, pc, pcg, alfa);
-    MO = mutatePop(O, pm, pmg, sigma);
+    O = crossoverPop(pop, pc, alfa);
+    MO = mutatePop(O, pm, sigma);
     pop = selectElitist(pop, MO);
     
     

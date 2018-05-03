@@ -3,7 +3,7 @@ nrProducts = 2;
 cols = nrProducts + 1;
 
 pop = zeros(n, cols);
-parfor i = 1:n
+for i = 1:n
     pop(i, :) = genIndivid(pop(i, :));
 end
 
