@@ -7,8 +7,8 @@ function [ generatie ] = selectElitist(pop, desc)
 % mecanism de selectie
 % E: generatie - noua generatie (supravietuitorii)
 
+global n;
 generatie = desc;
-[~, n] = size(desc);
 [max1, i] = max(pop(:,n));
 [max2, ~] = max(desc(:,n));
 if max1 > max2

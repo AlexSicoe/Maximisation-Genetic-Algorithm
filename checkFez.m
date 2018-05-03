@@ -1,13 +1,6 @@
 function [fez] = checkFez(qty)
 fez = false;
-
-if(qty(1)==0 && qty(2)==0)
-    %fez = false; %e deja false
-    return;
-end
-
-date = load("date.txt");
-[m,n] = size(date);
+global date, global m, global n;
 
 
 disponibil = zeros(1,m-1);
@@ -15,7 +8,7 @@ for i = 1:m-1
     disponibil(i) = date(i,n);
 end
 
-op = zeros(1, n-1);
+op = zeros(1, m-1);
 for i = 1:m-1
     for j = 1:n-1
         op(i) = op(i) + qty(j)*date(i, j);

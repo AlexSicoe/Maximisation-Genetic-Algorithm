@@ -1,8 +1,9 @@
 function [bestFitness, bestCandidate] = findBestCandidate(varargin)
+global n;
 if nargin == 1
     Pop = varargin{1};
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    [~,n] = size(Pop);
+     
     
     [bestFitness, candidateIndex] = max(Pop(:,n));
     bestCandidate = Pop(candidateIndex, 1:n-1);
@@ -11,7 +12,6 @@ elseif nargin == 2
     populationType = varargin{2};
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%
     
-    [~,n] = size(Pop);
     
     [bestFitness, candidateIndex] = max(Pop(:,n));
     bestCandidate = Pop(candidateIndex, 1:n-1);

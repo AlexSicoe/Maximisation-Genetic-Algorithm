@@ -1,3 +1,4 @@
+
 generations = 50;
 individuals = 70;
 pc = 0.75;
@@ -5,6 +6,12 @@ alfa = 0.65;
 pm = 0.25;
 sigma = 0.07;
 tournamentParticipants = 3;
+
+global date, global m, global n;
+global maxValues;
+date = load("date.txt");
+[m,n] = size(date);
+maxValues = findMaxGeneValues();
 
 pop = genPop(individuals);
 
@@ -17,12 +24,11 @@ for t = 1:generations
     MO = mutatePop(O, pm, sigma);
     pop = selectElitist(pop, MO);
     
-    
     [bestFitness, ~] = findBestCandidate(pop);
     vectorBestFit(t) = bestFitness;
 end
 
-[~,n]=size(pop);
+
 figure();
 hist(pop(:,n));
 title('Distribution of Final Population');

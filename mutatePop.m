@@ -1,30 +1,29 @@
 function [MO] = mutatePop(O, pm, sigma)
-[n,m] = size(O);
-minVal = 0;
-maxVal = [3,5]; %todo
+[nInd,~] = size(O);
+
 MO = O;
-for i=1:n
+for i=1:nInd
     r = unifrnd(0,1);
     if (r < pm)
-        MO(i,:) = mutationCreep(O(i, :), m, minVal, maxVal, sigma);
+        MO(i,:) = mutationCreep(O(i, :), sigma);
     end
 end
 end
 
-function [mIndivid] = mutationCreep(individ, m, minVal, maxVal, sigma)
-%pmg - probability to mutate a gene
-%%%%%%%%%%%%%%%%%
-mIndivid = zeros(1,m);
-for i=1:m-1
+function [mIndivid] = mutationCreep(individ, sigma)
+global n;
+minVal = 0;
+global maxValues;   %maxValues = [3,5];
+mIndivid = zeros(1,n);
+for i=1:n-1
     %R has mean 0 and deviation sigma
     R = normrnd(0,sigma);
     mIndivid(i) = individ(i) + R;
-    switch mIndivid(i)
-        case mIndivid(i) < minVal
+        if(mIndivid(i) < minVal)
             mIndivid(i) = minVal;
-        case mIndivid(i) > maxVal(i)
-            mIndivid(i) = maxVal(i);
-    end
+        elseif(mIndivid(i) > maxValues(i))
+            mIndivid(i) = maxValues(i);
+        end
 end
 mIndivid = checkFez_decision(mIndivid,individ);
 end

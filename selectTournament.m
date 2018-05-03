@@ -5,11 +5,11 @@ function [parinti] = selectTournament(pop, k)
 %k - numarul de participanti la fiecare turneu
 %output:
 %parinti - multisetul de parinti selectati
-
-[m, n] = size(pop);
-parinti = zeros(m,n);
-for i = 1:m
-    turneu = unidrnd(m,1,k);
+global n;
+[nInd, ~] = size(pop);
+parinti = zeros(nInd,n);
+for i = 1:nInd
+    turneu = unidrnd(nInd,1,k);
     valori = zeros (1, k);
     for j = 1:k
         valori(j) = pop (turneu(j), n);
