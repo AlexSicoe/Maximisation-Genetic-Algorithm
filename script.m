@@ -7,10 +7,10 @@ pm = 0.25;
 sigma = 0.07;
 tournamentParticipants = 3;
 
-global date, global m, global n;
+global data, global m, global n;
 global maxValues;
-date = load("date.txt");
-[m,n] = size(date);
+data = load("date.txt");
+[m,n] = size(data);
 maxValues = findMaxGeneValues();
 
 pop = genPop(individuals);

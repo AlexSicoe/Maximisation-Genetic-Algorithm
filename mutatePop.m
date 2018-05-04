@@ -4,7 +4,7 @@ function [MO] = mutatePop(O, pm, sigma)
 MO = O;
 for i=1:nInd
     r = unifrnd(0,1);
-    if (r < pm)
+    if (r <= pm)
         MO(i,:) = mutationCreep(O(i, :), sigma);
     end
 end
@@ -19,6 +19,7 @@ for i=1:n-1
     %R has mean 0 and deviation sigma
     R = normrnd(0,sigma);
     mIndivid(i) = individ(i) + R;
+   
         if(mIndivid(i) < minVal)
             mIndivid(i) = minVal;
         elseif(mIndivid(i) > maxValues(i))

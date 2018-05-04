@@ -3,12 +3,12 @@ function [f] = fitness(qty)
 %profit2 = 100;
 %f = profit1 * qty(1) + profit2 * qty(2);
 
-global date, global m, global n;
+global data, global m, global n;
 
 f = 0;
 for i = 1:n-1
-    %profit(i) este date(m, i);
-    f = f + date(m, i) * qty(i);
+    %data(m,i) is profit(i)
+    f = f + data(m, i) * qty(i);
 end
 
 end

@@ -14,6 +14,7 @@ end
 function [individ] = genIndivid(individ)
 global n;
 
+%do while loop
 individ = genAlleles(individ);
 while(checkFez(individ) == false)
     individ = genAlleles(individ);
