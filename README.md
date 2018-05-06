@@ -1,1 +1,0 @@
-# Maximisation-Genetic-Algorithm
