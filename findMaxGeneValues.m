@@ -1,5 +1,5 @@
 function [maxVal] = findMaxGeneValues()
-global date, global m, global n;
+global data, global m, global n;
 
 % i - current product
 % j - current operation 
@@ -7,8 +7,9 @@ global date, global m, global n;
 maxVal = zeros(1, n-1);
 ratios = zeros(1, m-1);
 for i = 1:n-1
+    
    for j = 1:m-1
-       ratios(j) = date(j,n) / date(j,i);
+       ratios(j) = data(j,n) / data(j,i);
    end
    maxVal(i) = min(ratios);
 end

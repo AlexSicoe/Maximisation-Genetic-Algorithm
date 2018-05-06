@@ -34,11 +34,11 @@ function[z] = crossoverReal(x, y, alfa)
 %x, y - parents
 %z - child
 
-%alfa = unifrnd(0,1);
+
+   % alfa = unifrnd(0,1);
 global n;
 z=zeros(1,n);
 for i=1:n-1    
-
         z(i) = alfa*x(i) + (1-alfa)*y(i);
 end
 z = checkFez_decision(z,x);

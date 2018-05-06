@@ -1,7 +1,8 @@
 function [pop] = fitnessPop(pop)
-[individuals,~] = size(pop);
-for i = 1:individuals
-    pop(i, 3) = fitness(pop(i, :));
+global n;
+[nInd,~] = size(pop);
+for i = 1:nInd
+    pop(i, n) = fitness(pop(i, :));
 end
 
 end

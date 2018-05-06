@@ -1,16 +1,16 @@
-
-generations = 50;
-individuals = 70;
-pc = 0.75;
-alfa = 0.65;
-pm = 0.25;
+individuals = 50;
+generations = 200;
+pc = 0.8;
+alfa = 0.5;
+pm = 0.2;
 sigma = 0.07;
 tournamentParticipants = 3;
 
 global data, global m, global n;
 global maxValues;
-data = load("date.txt");
+data = load("data.txt");
 [m,n] = size(data);
+
 maxValues = findMaxGeneValues();
 
 pop = genPop(individuals);
@@ -19,9 +19,10 @@ pop = genPop(individuals);
 vectorBestFit = zeros(1, generations);
 
 for t = 1:generations
-    pop = selectTournament(pop,tournamentParticipants);
-    O = crossoverPop(pop, pc, alfa);
+    selPop = selectTournament(pop,tournamentParticipants);
+    O = crossoverPop(selPop, pc, alfa);
     MO = mutatePop(O, pm, sigma);
+    MO = fitnessPop(MO);
     pop = selectElitist(pop, MO);
     
     [bestFitness, ~] = findBestCandidate(pop);
