@@ -20,6 +20,7 @@ for i=1:n-1
     R = normrnd(0,sigma);
     mIndivid(i) = individ(i) + R;
    
+    
         if(mIndivid(i) < minVal)
             mIndivid(i) = minVal;
         elseif(mIndivid(i) > maxValues(i))
